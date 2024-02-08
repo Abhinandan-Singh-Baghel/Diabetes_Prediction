@@ -71,6 +71,46 @@ X_train_prediction = classifier.predict(X_train)
 training_data_accuracy = accuracy_score(X_train_prediction, Y_train)
 
 
+print('Accuracy on training data : ', training_data_accuracy)
+
+X_test_prediction = classifier.predict(X_test)
+test_data_accuracy = accuracy_score(X_test_prediction, Y_test)
+
+print('Accuracy on test data : ', test_data_accuracy)
+
+
+
+# making a predective system
+
+input_data = (6,148,72,35,0,33.6,0.627,50)
+
+# input_data to numpy array
+
+input_data_as_numpy_array = numpy.asarray(input_data)
+
+# reshape the array as we are predicting for one instance
+# two dimensional array
+
+input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+
+print(input_data_reshaped)
+
+#standardize the input data 
+
+std_data = scalar.transform(input_data_reshaped)
+print(std_data)
+
+prediction = classifier.predict(std_data)
+print(prediction)
+
+
+if(prediction[0] == 0):
+    print('The person is not diabetic')
+else:
+    print('The person is diabetic')
+
+
+
 
 
 
